@@ -10,6 +10,8 @@ import lombok.ToString;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
@@ -50,7 +52,8 @@ public class User extends Base {
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private Wishlist wishlist;
 
-//    stocks
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Stock> stocks = new ArrayList<>();
 
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;

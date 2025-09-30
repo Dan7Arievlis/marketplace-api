@@ -23,6 +23,9 @@ public class StockItem extends Base {
     @Column(name = "quantity", nullable = false)
     private int quantity = 1;
 
+    @Column(name = "status", nullable = false)
+    private ItemStatus itemStatus = ItemStatus.OPEN;
+
     public BigDecimal getSubtotal() {
         return product.getPrice().multiply(new BigDecimal(quantity));
     }

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: Marketplace API
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/marketplace
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate.format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+
+#springdoc:
+#  override-with-generic-response: false
+
+#logging:
+#  pattern:
+#    console: '%clr(%d{dd-MM-yyyy HH:mm:ss}){faint} %clr(%5p) %clr([%t]){faint} %clr(%-40.40logger){cyan} %clr(:){yellow} %m%n'
+#  file:
+#    name: app.log
+#  level:
+#    root: warn
+#    io:
+#      github:
+#        dan7arievlis: warn
+#    org:
+#      springframework:
+#        web: debug
+#        security: warn
+
+#management:
+#  server:
+#    port: 9090
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'

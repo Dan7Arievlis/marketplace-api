@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Data
@@ -15,6 +18,9 @@ public class Stock extends Base {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @OneToMany(mappedBy = "stock", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StockItem> stockItems = new ArrayList<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private User owner;
 }
